@@ -31,6 +31,7 @@ jobs:
       shell: bash
 
     - name: Install Playwright Browsers
+      if: steps.cache.outputs.cache-hit != 'true'
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
