@@ -1,4 +1,6 @@
 name: Playwright Tests
+run-name: Pipeline - from user @${{ github.actor }}
+
 on:
   push:
     branches: [ main, master ]
