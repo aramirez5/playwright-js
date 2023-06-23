@@ -25,13 +25,21 @@ jobs:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
 
+    - name: Cache Playwright binaries
+      uses: actions/cache@v3
+      id: playwright-cache
+      with:
+        path: |
+          ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
-      run: npm install
+      run: npm ci
       shell: bash
 
     - name: Install Playwright browsers
-      if: steps.cache.outputs.cache-hit != 'true'
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
