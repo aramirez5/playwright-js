@@ -3,9 +3,16 @@ run-name: Pipeline - from user @${{ github.actor }}
 
 on:
   push:
-    branches: [ main, master ]
+    branches:
+      - master
+  
   pull_request:
-    branches: [ main, master ]
+    types:
+      - opened
+      - closed
+    branches:
+      - master
+
 jobs:
   test:
     timeout-minutes: 60
