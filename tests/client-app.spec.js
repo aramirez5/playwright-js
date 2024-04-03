@@ -7,7 +7,6 @@ test('Browser context-validation error login', async ({ page }) => {
     const signInBtn = page.locator("//input[@id='login']");
 
     await page.goto('https://rahulshettyacademy.com/client');
-
     await username.fill("pmdzjbrgbhwnkescia@tpwlb.com");
     await password.fill("Iamking@000");
     await signInBtn.click();
@@ -23,23 +22,19 @@ test.only('Purchase test', async ({ page }) => {
     const username = page.locator("//input[@id='userEmail']");
     const password = page.locator("//input[@id='userPassword']");
     const signInBtn = page.locator("//input[@id='login']");
-
-    // LOGIN
-    await page.goto('https://rahulshettyacademy.com/client');
-
-    await username.fill("pmdzjbrgbhwnkescia@tpwlb.com");
-    await password.fill("Iamking@000");
-    await signInBtn.click();
-
-    await page.waitForLoadState('networkidle');
-
     const addCartBtn = page.locator("(//button[contains(.,'Add To Cart')])[1]");
     const addCartAlert = page.locator("//div[contains(@role,'alert')]");
     const cartBtn = page.locator("//button[contains(@routerlink,'/dashboard/cart')]");
     const productName = 'ZARA COAT 3';
     const products = page.locator("(//div[contains(@class,'card-body')])");
-    const titles = await page.locator(".card-body b").allTextContents();
     const count = await products.count();
+
+    // LOGIN
+    await page.goto('https://rahulshettyacademy.com/client');
+    await username.fill("pmdzjbrgbhwnkescia@tpwlb.com");
+    await password.fill("Iamking@000");
+    await signInBtn.click();
+    await page.waitForLoadState('networkidle');
 
     // ADD PRODUCT TO CART
     for (let i = 0; i < count; i++) {
