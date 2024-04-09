@@ -6,9 +6,11 @@ test('Hide/show validation', async ({ page }) => {
 
   // Default it is visible
   await expect(page.locator("#displayed-text")).toBeVisible();
+
   // Click on Hide
   await page.locator("#hide-textbox").click();
   await expect(page.locator("#displayed-text")).toBeHidden();
+
   // Click on Show
   await page.locator("#show-textbox").click();
   await expect(page.locator("#displayed-text")).toBeVisible();
@@ -40,4 +42,31 @@ test('Iframe validation', async ({ page }) => {
   const textCheck = await iframePage.locator(".text h2").textContent();
 
   expect(textCheck.split(" ")[1]).toBe(numberExpected);
+});
+
+test('Screenshot and visual comparision', async ({ page }) => {
+
+  await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
+
+  // Default it is visible
+  await expect(page.locator("#displayed-text")).toBeVisible();
+
+  // Click on Hide
+  await page.locator("#hide-textbox").click();
+  await expect(page.locator("#displayed-text")).toBeHidden();
+  await page.screenshot({ path: 'before.png', fullPage: true });
+  await page.locator("//fieldset[contains(.,'Element Displayed Example')]").screenshot({ path: 'before-partial.png' });
+
+  // Click on Show
+  await page.locator("#show-textbox").click();
+  await expect(page.locator("#displayed-text")).toBeVisible();
+  await page.screenshot({ path: 'after.png', fullPage: true });
+  await page.locator("//fieldset[contains(.,'Element Displayed Example')]").screenshot({ path: 'after-partial.png' });
+});
+
+test('Visual comparision', async ({ page }) => {
+
+  await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
+
+  expect(await page.screenshot()).toMatchSnapshot('example.png');
 });
