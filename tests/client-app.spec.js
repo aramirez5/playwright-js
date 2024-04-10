@@ -39,7 +39,7 @@ test('Purchase test', async ({ page }) => {
     // ADD PRODUCT TO CART
     for (let i = 0; i < count; i++) {
         if (await products.nth(i).locator("b").textContent() === productName) {
-            await products.nth(i).locator("text= Add To Cart").click();
+            await products.nth(i).locator("text = Add To Cart").click();
             break;
         }
     }
