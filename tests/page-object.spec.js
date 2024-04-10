@@ -1,13 +1,14 @@
 const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('../page-objects/LoginPage.js');
-const { DashboardPage } = require('../page-objects/DashboardPage.js');
+const { POManager } = require('../page-objects/POManager.js');
 
 test('Client app login', async ({ page }) => {
 
+    const poManager = new POManager(page);
+    
     const username = "pmdzjbrgbhwnkescia@tpwlb.com";
     const password = "Iamking@000";
 
-    const loginPage = new LoginPage(page);
+    const loginPage = poManager.getLoginPage();
     await loginPage.goTo();
     await loginPage.validLogin(username, password);
 
@@ -18,17 +19,19 @@ test('Client app login', async ({ page }) => {
 
 test('Purchase test', async ({ page }) => {
 
+  const poManager = new POManager(page);
+
   const username = "pmdzjbrgbhwnkescia@tpwlb.com";
   const password = "Iamking@000";
   const addCartAlert = page.locator("//div[contains(@role,'alert')]");
   const cartBtn = page.locator("//button[contains(@routerlink,'/dashboard/cart')]");
   const productName = 'ZARA COAT 3';
 
-  const loginPage = new LoginPage(page);
+  const loginPage = poManager.getLoginPage();
   await loginPage.goTo();
   await loginPage.validLogin(username, password);
 
-  const dashboardPage = new DashboardPage(page);
+  const dashboardPage = poManager.getDashboardPage();
   await dashboardPage.searchProductAndAddToCart(productName);
   await dashboardPage.navigateToCart();
 
