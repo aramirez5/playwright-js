@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test('Browser context-validation error login', async ({ page }) => {
+test('Client app login', async ({ page }) => {
 
     const username = page.locator("//input[@id='userEmail']");
     const password = page.locator("//input[@id='userPassword']");
