@@ -12,7 +12,7 @@ test('Client app login', async ({ page }) => {
 
   const loginPage = poManager.getLoginPage();
   await loginPage.goTo();
-  await loginPage.validLogin(dataSet.username, dataSet.password);
+  await loginPage.validLogin(username, password);
 
   const titles = await page.locator(".card-body b").allTextContents();
 
@@ -24,11 +24,8 @@ for (const data of dataSet) {
 
     const poManager = new POManager(page);
 
-    const username = "pmdzjbrgbhwnkescia@tpwlb.com";
-    const password = "Iamking@000";
     const addCartAlert = page.locator("//div[contains(@role,'alert')]");
     const cartBtn = page.locator("//button[contains(@routerlink,'/dashboard/cart')]");
-    const productName = 'ZARA COAT 3';
 
     const loginPage = poManager.getLoginPage();
     await loginPage.goTo();
@@ -45,8 +42,8 @@ for (const data of dataSet) {
 
     // RESUME
     await expect(page.locator("//h1[contains(.,'My Cart')]")).toContainText('My Cart');
-    await expect(page.locator("//h3[contains(.,'ZARA COAT 3')]")).toContainText(data.productName);
-    await expect(page.locator("(//p[contains(.,'$ 31500')])[2]")).toContainText('$ 31500');
+    await expect(page.locator("h3:has-text('" + data.productName + "')")).toBeVisible();
+    await expect(page.locator(".prodTotal p")).toContainText('$ 31500');
     await page.locator("//button[contains(.,'Buy Now')]").click();
 
     // BUY FORM
@@ -103,8 +100,8 @@ for (const data of dataSet) {
   
     // RESUME
     await expect(page.locator("//h1[contains(.,'My Cart')]")).toContainText('My Cart');
-    await expect(page.locator("//h3[contains(.,'ZARA COAT 3')]")).toContainText(testDataOrder.productName);
-    await expect(page.locator("(//p[contains(.,'$ 31500')])[2]")).toContainText('$ 31500');
+    await expect(page.locator("h3:has-text('" + testDataOrder.productName + "')")).toBeVisible();
+    await expect(page.locator(".prodTotal p")).toContainText('$ 31500');
     await page.locator("//button[contains(.,'Buy Now')]").click();
   
     // BUY FORM

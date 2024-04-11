@@ -17,7 +17,7 @@ test('Client app login', async ({ page }) => {
     console.log(titles);
 });
 
-test('Purchase test', async ({ page }) => {
+test('Purchase a Zara coat test', async ({ page }) => {
 
     const username = page.locator("//input[@id='userEmail']");
     const password = page.locator("//input[@id='userPassword']");
