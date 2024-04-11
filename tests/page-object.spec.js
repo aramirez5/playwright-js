@@ -20,7 +20,7 @@ test('Client app login', async ({ page }) => {
 });
 
 for (const data of dataSet) {
-  test(`Purchase test ${data.productName}`, async ({ page }) => {
+  test(`Purchase test for ${data.productName}`, async ({ page }) => {
 
     const poManager = new POManager(page);
 
@@ -32,7 +32,7 @@ for (const data of dataSet) {
 
     const loginPage = poManager.getLoginPage();
     await loginPage.goTo();
-    await loginPage.validLogin(dataSet.username, data.password);
+    await loginPage.validLogin(data.username, data.password);
 
     const dashboardPage = poManager.getDashboardPage();
     await dashboardPage.searchProductAndAddToCart(data.productName);
@@ -81,7 +81,7 @@ for (const data of dataSet) {
     await page.close();
   });
 
-  customtest(`Purchase customtest ${data.productName}`, async ({ page, testDataOrder }) => {
+  customtest(`Purchase customtest for ${data.productName}`, async ({ page, testDataOrder }) => {
 
     const poManager = new POManager(page);
 
