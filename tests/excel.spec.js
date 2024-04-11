@@ -43,11 +43,11 @@ test('Upload and download excel validation', async ({ page }) => {
   await downloadPromise;
   
   //UPDATE THE EXCEL FILE
-  writeExcelTest(textSearch, updateValue, { rowChange: 0, colChange: 2 }, "tests/resources/download.xlsx");
+  writeExcelTest(textSearch, updateValue, { rowChange: 0, colChange: 2 }, "resources/download.xlsx");
   
   //UPLOAD THE FILE
   await page.locator("#fileinput").click();
-  await page.locator("#fileinput").setInputFiles("tests/resources/download.xlsx");
+  await page.locator("#fileinput").setInputFiles("resources/download.xlsx");
   
   // CHECK THE UPDATED VALUE IS SHOWN IN THE WEBSITE
   const textlocator = page.getByText(textSearch);
