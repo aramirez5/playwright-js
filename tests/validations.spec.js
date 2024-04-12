@@ -1,6 +1,8 @@
 const { test, expect } = require('@playwright/test');
 
-test('Hide/show validation', async ({ page }) => {
+test.describe.configure({mode: 'serial'});
+
+test('@Web Hide/show validation', async ({ page }) => {
 
   await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
 
