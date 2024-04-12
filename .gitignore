@@ -3,3 +3,6 @@ node_modules/
 /playwright-report/
 /playwright/.cache/
 state.json
+/allure-results
+/allure-report
+/.vscode

@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "Testing with Playwright framework with javascript",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "regression": "npx playwright test",
+    "webTests": "npx playwright test --grep=Web",
+    "gitflow": "npx playwright test --config playwright.flow.config.js --project=shop"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.42.1"
+    "@playwright/test": "^1.43.0",
+    "allure-playwright": "^2.15.1"
   },
   "dependencies": {
     "exceljs": "^4.4.0"
