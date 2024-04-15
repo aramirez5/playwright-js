@@ -1,7 +1,5 @@
 const { When, Then, Given } = require('@cucumber/cucumber');
 const { expect } = require('@playwright/test');
-const { POManager } = require('../../page-objects/POManager');
-const playwright = require('@playwright/test');
 
 Given('a login to ecommerce application with {string} and {string}', { timeout: 100 * 1000 }, async function (username, password) {
 

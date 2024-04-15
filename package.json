@@ -6,7 +6,9 @@
   "scripts": {
     "regression": "npx playwright test",
     "webTests": "npx playwright test --grep=Web",
-    "gitflow": "npx playwright test --config playwright.flow.config.js --project=shop"
+    "gitflow": "npx playwright test --config playwright.flow.config.js --project=shop",
+    "cucumberFile": "npx cucumber-js features/Ecommerce.feature --parallel 2 --exit --format html:cucumber-report.html",
+    "cucumberTag": "npx cucumber-js --tags \"@Validation\" --exit --format html:cucumber-report.html"
   },
   "keywords": [],
   "author": "",
