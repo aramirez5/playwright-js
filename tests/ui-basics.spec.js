@@ -14,8 +14,8 @@ test('Page Google test', async({page}) => {
     console.log(await page.title());
     await expect(page).toHaveTitle('Google');
 
-    page.locator("//input[@id='username']").type("Álvaro");
-    page.locator("//input[@id='password']").type("123456");
+    page.locator("//input[@id='username']").fill("Álvaro");
+    page.locator("//input[@id='password']").fill("123456");
     page.locator("//input[@id='signInBtn']").click();
     
     console.log(await page.locator("//strong[contains(.,'Incorrect')]").textContent());
@@ -28,8 +28,8 @@ test('Login Page - Incorrect credentials test', async({page}) => {
     console.log(await page.title());
     await expect(page).toHaveTitle('LoginPage Practise | Rahul Shetty Academy');
 
-    await page.locator("//input[@id='username']").type("Álvaro");
-    await page.locator("//input[@id='password']").type("123456");
+    await page.locator("//input[@id='username']").fill("Álvaro");
+    await page.locator("//input[@id='password']").fill("123456");
     await page.locator("//input[@id='signInBtn']").click();
     
     console.log(await page.locator("//strong[contains(.,'Incorrect')]").textContent());
@@ -46,8 +46,8 @@ test('Login Page - Correct credentials test', async({page}) => {
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
     await expect(page).toHaveTitle('LoginPage Practise | Rahul Shetty Academy');
 
-    await username.type("rahulshettyacademy");
-    await password.type("learning");
+    await username.fill("rahulshettyacademy");
+    await password.fill("learning");
     await Promise.all(
         [
             page.waitForNavigation(),
@@ -103,7 +103,7 @@ test('Child window handle', async({browser}) => {
     const arrayText = text.split("@");
     const domain = arrayText[1].split(" ")[0];
     console.log(domain);
-    await username.type(domain);
+    await username.fill(domain);
     await page.pause();
     console.log(await username.textContent());
 });
