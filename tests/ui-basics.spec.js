@@ -48,13 +48,17 @@ test('Login Page - Correct credentials test', async({page}) => {
 
     await username.fill("rahulshettyacademy");
     await password.fill("learning");
-    await Promise.all(
-        [
-            // page.waitForNavigation(),
-            await signInBtn.click(),
-            await page.waitForURL('**/angularpractice/shop')           
-        ]
-    );
+    
+    // ! Wait for navigation is deprecated
+    // await Promise.all(
+    //     [
+    //         page.waitForNavigation(),
+    //         await signInBtn.click()      
+    //     ]
+    // );
+    
+    await signInBtn.click();
+    await page.waitForURL('**/angularpractice/shop');
     
     // console.log(await cardTitles.first().textContent());
     // console.log(await cardTitles.nth(1).textContent());
