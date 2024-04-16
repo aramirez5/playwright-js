@@ -16,8 +16,8 @@ test.beforeAll(async ({ browser }) => {
   await password.fill("Iamking@000");
   await signInBtn.click();
   await page.waitForLoadState('networkidle');
-  await context.storageState({ path: 'state.json' });
-  webContext = await browser.newContext({ storageState: 'state.json' });
+  await context.storageState({ path: 'resources/state.json' });
+  webContext = await browser.newContext({ storageState: 'resources/state.json' });
 });
 
 test('Storage test', async () => {

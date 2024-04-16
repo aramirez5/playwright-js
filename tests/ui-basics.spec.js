@@ -50,10 +50,11 @@ test('Login Page - Correct credentials test', async({page}) => {
     await password.fill("learning");
     await Promise.all(
         [
-            page.waitForNavigation(),
-            await signInBtn.click()
+            // page.waitForNavigation(),
+            await signInBtn.click(),
+            await page.waitForURL('**/angularpractice/shop')           
         ]
-    ) 
+    );
     
     // console.log(await cardTitles.first().textContent());
     // console.log(await cardTitles.nth(1).textContent());

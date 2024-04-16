@@ -4,6 +4,10 @@
   "description": "Testing with Playwright framework with javascript",
   "main": "index.js",
   "scripts": {
+    "ui": "npx playwright test --ui",
+    "runAllure": "npx playwright test --grep @Web --reporter=line,allure-playwright",
+    "generateAllure": "allure generate ./allure-results/ --clean",
+    "openAllure": "allure open ./allure-report",
     "regression": "npx playwright test",
     "webTests": "npx playwright test --grep=Web",
     "gitflow": "npx playwright test --config playwright.flow.config.js --project=shop",
